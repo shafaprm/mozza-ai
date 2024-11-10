@@ -14,6 +14,8 @@ router.post('/register', registerValidation, async (req, res, next) => {
     try{
         const {firstName, lastName, email, password} = req.body;
 
+        console.log(firstName, lastName, email, password)
+
         const findUserByEmail = await User.findOne({email});
         
         if(findUserByEmail){

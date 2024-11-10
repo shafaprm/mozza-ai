@@ -1,13 +1,23 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-const Input = ({ title, label, width, value }) => {
+const Input = ({ title, label, width, onInputChange, name }) => {
+  const handleChange = (event) => {
+    onInputChange(name, event.target.value);
+  };
+
   return (
-    <Container >
-      <label style={{ fontSize: '13px', fontWeight: 500 }} htmlFor={title}>
+    <Container>
+      <label style={{ fontSize: "13px", fontWeight: 500 }} htmlFor={title}>
         {title}
       </label>
-      <InputBox style = {{width: width || "100%"}}type={title === 'Password' ? 'password' : 'text'} id={title} placeholder={label} />
+      <InputBox
+        style={{ width: width || "100%" }}
+        type={title === "Password" ? "password" : "text"}
+        id={title}
+        placeholder={label}
+        onChange={handleChange}
+      />
     </Container>
   );
 };
